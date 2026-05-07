@@ -1,13 +1,11 @@
 import * as THREE from "three";
-import { createProgramFromScripts, rand } from "./utils";
+import { createProgramFromSources, rand } from "./utils";
+import vertexSrc from "./vertex.glsl?raw";
+import fdmSrc from "./FDM.glsl?raw";
 
 const canvas = new OffscreenCanvas(1, 1);
 const gl = canvas.getContext("webgl2")!;
-const program = await createProgramFromScripts(
-  gl,
-  "./vertex.glsl",
-  "./FDM.glsl"
-);
+const program = createProgramFromSources(gl, vertexSrc, fdmSrc);
 
 gl.getExtension("EXT_color_buffer_float");
 

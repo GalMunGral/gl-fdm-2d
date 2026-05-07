@@ -61,29 +61,12 @@ function createProgram(
   return program;
 }
 
-async function createShaderFromScript(
+export function createProgramFromSources(
   gl: WebGL2RenderingContext,
-  url: string,
-  opt_shaderType: GLenum
+  vertexShaderSrc: string,
+  fragmentShaderSrc: string
 ) {
-  var shaderSource = await (await fetch(url)).text();
-  return compileShader(gl, shaderSource, opt_shaderType);
-}
-
-export async function createProgramFromScripts(
-  gl: WebGL2RenderingContext,
-  vertexShaderUrl: string,
-  fragmentShaderUrl: string
-) {
-  var vertexShader = await createShaderFromScript(
-    gl,
-    vertexShaderUrl,
-    gl.VERTEX_SHADER
-  );
-  var fragmentShader = await createShaderFromScript(
-    gl,
-    fragmentShaderUrl,
-    gl.FRAGMENT_SHADER
-  );
+  const vertexShader = compileShader(gl, vertexShaderSrc, gl.VERTEX_SHADER);
+  const fragmentShader = compileShader(gl, fragmentShaderSrc, gl.FRAGMENT_SHADER);
   return createProgram(gl, vertexShader, fragmentShader);
 }
