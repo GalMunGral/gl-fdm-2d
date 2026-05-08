@@ -6,7 +6,7 @@
 
 ### Purpose
 
-[gl-raytracer](https://github.com/GalMunGral/gl-raytracer) demonstrated that a fragment shader can serve as a general-purpose parallel compute kernel. This project makes that point with a different application: real-time numerical simulation of the 2D wave equation. Each grid cell is updated simultaneously by a separate fragment invocation — a degree of parallelism that worker threads cannot replicate. The goal is to show that WebGL is not limited to graphics.
+[gl-raytracer](https://github.com/GalMunGral/gl-raytracer) demonstrated that a fragment shader can serve as a general-purpose parallel compute kernel. This project makes that point with a different application: real-time numerical simulation of the 2D wave equation using the finite difference method (FDM). Each grid cell is updated simultaneously by a separate fragment invocation — a degree of parallelism that worker threads cannot replicate. The goal is to show that WebGL is not limited to graphics.
 
 ### Strategy
 
